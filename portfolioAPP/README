@@ -18,7 +18,8 @@ _____
    called `Portfolio` or change the name of the database in the Portfolio.sql.
 2) Change the database connection 'user' and 'password' in config/db.php
    to conncet to your datase.
-3) place the contents of portfolioAPP into the root directory of your web server. Make sure the folder      public_html is the right name for accessing your web contenr.
+3) place the contents of portfolioAPP into the root directory of your web server. Make sure the folder
+   in public_html is the right name for accessing your web content.
 4) If you change the name of 'public_html', make sure to change the image             
    management 'public_html' to its new name, for where to put images. 
 5) open up the website to www.domainName.com/admin.
@@ -29,12 +30,11 @@ _____
 7) hit 'Personal Info' and change the password and username for next time.
 
 
-Authors
+Author
 -------
 
-**Jeremy Bohrer**
+Jeremy Bohrer
 
-+ hhttp://www.facebook.com/jeremy.b.522
 
 Copyright and license
 ---------------------
