@@ -1,0 +1,15 @@
+
+{{ path('home') }}
+{{ path('portfolio') }}
+{{ path('project', {project: 'Portfolio'}) }}
+
+{{ adminFirstName }}
+{{ adminLastName }}
+{{ adminShortAbout }}
+
+
+{% for project in projects %}
+    {{ project.name }}
+    {{ project.type }}
+    {{ project.dateCreated }}
+{% endfor %}

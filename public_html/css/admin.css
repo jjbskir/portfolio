@@ -1,0 +1,25 @@
+/*
+	admin
+*/
+
+#projectList {
+     text-align: center;
+     font-size: 30px;
+     line-height: 30px;
+     padding: 10px;
+     padding-bottom: 20px;
+}
+#projectList a {
+    padding-right: 10px;
+    padding-left: 10px;
+    border-left: 2px solid black; 
+}
+
+#projects {
+    background-color: lightgray;
+    text-align: center;
+    position: relative;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px #888888;
+}

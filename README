@@ -1,1 +1,54 @@
 Portfolio App
+_____________
+
+The Portfolio app makes it easy to set up a portfolio website.
+It has a backend system for managing all of your projects.
+
+Requirments
+___________
+
+* PHP 5.4 or greater
+* MySQL 
+* Apache
+
+Setup
+_____
+
+1) Run SQL document sql/Portfolio.sql to setup database. Make sure database is
+   called `Portfolio` or change the name of the database in the Portfolio.sql.
+2) Change the database connection 'user' and 'password' in config/db.php
+   to conncet to your datase.
+3) place the contents of portfolioAPP into the root directory of your web server. Make sure the folder
+   in public_html is the right name for accessing your web content.
+4) If you change the name of 'public_html', make sure to change the image             
+   management 'public_html' to its new name, for where to put images. 
+5) open up the website to www.domainName.com/admin.
+6) in the login form type
+	username: 'username'
+	password: 'password'
+   to enter into the admin area for the first time.
+7) hit 'Personal Info' and change the password and username for next time.
+
+
+Author
+-------
+
+Jeremy Bohrer
+
+
+Copyright and license
+---------------------
+
+Copyright 2012 Jeremy Bohrer
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this work except in compliance with the License.
+You may obtain a copy of the License in the LICENSE file, or at:
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
