@@ -1,0 +1,9 @@
+
+{{ adminFirstName }}
+{{ adminLastName }}
+
+{% for project in projects %}
+    {{ project.name }}
+    {{ project.type }}
+    {{ project.dateCreated }}
+{% endfor %}
