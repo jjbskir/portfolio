@@ -22434,8 +22434,11 @@ SQLSTATE[42S22]: Column not found: 1054 Unknown column 'firstName' in 'where cla
 [2013-01-07 22:51:00] myapp.INFO: Matched route "home" (parameters: "_controller": "{}", "_route": "home") [] []
 [2013-01-07 22:51:00] myapp.INFO: > GET /practice/portfolioFinal/web/index.php/ [] []
 [2013-01-07 22:51:01] myapp.INFO: < 200 [] []
+<<<<<<< HEAD
 <<<<<<< master
 =======
+=======
+>>>>>>> local
 <<<<<<< refs/remotes/origin/local
 =======
 [2013-04-18 23:45:08] myapp.INFO: Matched route "home" (parameters: "_controller": "{}", "_route": "home") [] []
@@ -23209,6 +23212,7 @@ SQLSTATE[42S22]: Column not found: 1054 Unknown column 'firstName' in 'where cla
 [2013-04-19 04:52:39] myapp.INFO: < 200 [] []
 [2013-04-19 04:52:39] myapp.DEBUG: Write SecurityContext in the session [] []
 >>>>>>> local
+<<<<<<< HEAD
 [2013-04-19 05:39:54] myapp.INFO: Matched route "home" (parameters: "_controller": "{}", "_route": "home") [] []
 [2013-04-19 05:39:54] myapp.INFO: > GET /portfolio/public_html/index.php/ [] []
 [2013-04-19 05:39:54] myapp.INFO: < 200 [] []
@@ -23290,4 +23294,6 @@ SQLSTATE[42S22]: Column not found: 1054 Unknown column 'firstName' in 'where cla
 [2013-04-19 05:49:26] myapp.INFO: Matched route "home" (parameters: "_controller": "{}", "_route": "home") [] []
 [2013-04-19 05:49:26] myapp.INFO: > GET /portfolio/public_html/index.php/ [] []
 [2013-04-19 05:49:26] myapp.INFO: < 200 [] []
+>>>>>>> local
+=======
 >>>>>>> local

@@ -2,9 +2,10 @@ Portfolio App
 _____________
 
 The Portfolio app makes it easy to set up a portfolio website.
-It has a backend system for managing all of your projects.
+Either place the contents of this directory into your web server or pull it from
+git. 
 
-Requirments
+Requirements
 ___________
 
 * PHP 5.4 or greater
@@ -14,15 +15,18 @@ ___________
 Setup
 _____
 
-1) Run SQL document sql/Portfolio.sql to setup database. Make sure database is
-   called `Portfolio` or change the name of the database in the Portfolio.sql.
-2) Change the database connection 'user' and 'password' in config/db.php
-   to conncet to your datase.
-3) place the contents of portfolioAPP into the root directory of your web server. Make sure the folder
-   in public_html is the right name for accessing your web content.
-4) If you change the name of 'public_html', make sure to change the image             
-   management 'public_html' to its new name, for where to put images. 
-5) open up the website to www.domainName.com/admin.
+1) Run SQL document sql/Portfolio.sql to setup database. Make sure the database is
+   called `Portfolio`. Or go to sql/Portfolio.sql and change every occurrence of 
+   'Portfolio' to the name of your database.
+2) Change the database connection information in config/db.php.
+   Will need to change the 'username' and 'password' field.
+3) Place the contents of portfolioAPP into the root directory of your web server.
+   The file structure of the app has 'public_html' being the point of access for 
+   the website, which is the default location for most web servers.
+4) If you have a different directory name, the image management needs to
+   know where to look for images. So go to src/bootstrap.php - app['ImageMangment']
+   and change 'public_html' to your new directory name.
+5) open the website to www.domainName.com/admin.
 6) in the login form type
 	username: 'username'
 	password: 'password'
