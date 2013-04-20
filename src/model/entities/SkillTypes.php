@@ -1,5 +1,7 @@
 <?php
 
+namespace model\entities;
+
 /**
  * Description of SkillTypes
  *
@@ -19,7 +21,7 @@ class SkillTypes {
     /**
      * @return type, mapping of id => type. 
      */
-    public function getStuff() {
+    public function getIdTypeMap() {
         $idTypeMap = array();
         if (is_array($this->skillTypes)) foreach ($this->skillTypes as $skillTypeObject) {
             $idTypeMap[$skillTypeObject->getId()] = $skillTypeObject->getType();
@@ -30,7 +32,7 @@ class SkillTypes {
     public function getSkillTypesKey() {
         $keys = array();
         if (is_array($this->skillTypes)) foreach ($this->skillTypes as $skillTypeObject) {
-            array_push($keys, $typeObject->getId());
+            array_push($keys, $skillTypeObject->getId());
         }
         return $keys;
     } 
