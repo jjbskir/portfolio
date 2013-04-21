@@ -18,11 +18,11 @@
 
             <div class="row" >
                 <ul>
-                    <h3> {{ key|capitalize }} </h3>
+                    <h3> {{ key|title }} </h3>
                 
                 {% for skill in type %}
                     <li>
-                        {{ skill.skill|capitalize }}
+                        {{ skill.skill }}
                         {% if loop.last %}
                             
                         {% else %}
