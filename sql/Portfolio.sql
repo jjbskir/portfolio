@@ -90,7 +90,35 @@ CREATE TABLE IF NOT EXISTS `Portfolio`.`users` (
 --
 
 INSERT INTO `Portfolio`.`users` (`id`, `username`, `password`, `roles`, `firstName`, `lastName`, `shortAbout`, `about`, `email`, `phoneNumber`, `address`) VALUES
-(1, 'username', 'BFEQkknI/c+Nd7BaG7AaiyTfUFby/pkMHy3UsYqKqDcmvHoPRX/ame9TnVuOV2GrBH0JK9g4koW+CgTYI9mK+w==', 'ADMIN', 'Jeremy', 'Bohrer', 'My Portfolio', 'My Portfolio', 'jjbskir@gmail.com', '(914) 588-6285', 'New York, NY');
+(1, 'username', 'BFEQkknI/c+Nd7BaG7AaiyTfUFby/pkMHy3UsYqKqDcmvHoPRX/ame9TnVuOV2GrBH0JK9g4koW+CgTYI9mK+w==', 'ADMIN', 'Jeremy', 'Bohrer', 'My Portfolio', 'My Portfolio', 'jjbskir@gmail.com', '(111) 111-1111', 'New York, NY');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `skills`
+--
+
+CREATE TABLE IF NOT EXISTS `skills` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `skill` varchar(100) NOT NULL,
+  `typeId` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `skillTypes`
+--
+
+CREATE TABLE IF NOT EXISTS `skillTypes` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `skillType` varchar(100) NOT NULL DEFAULT '',
+  UNIQUE KEY `type` (`skillType`),
+  KEY `id` (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+
+-- --------------------------------------------------------
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

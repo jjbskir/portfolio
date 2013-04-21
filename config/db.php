@@ -8,8 +8,8 @@ $dbConfig = array(
     'driver'    => 'pdo_mysql',
     'dbname'    => 'Portfolio',
     'host'      => '127.0.0.1',
-    'user'      => 'username',
-    'password'  => 'password'
+    'user'      => 'root',
+    'password'  => 'Lakess1'
 );
 
 return $dbConfig;
