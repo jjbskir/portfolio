@@ -46,14 +46,12 @@ class ImageManagment {
         $state = 0;
         
         if ($_SERVER['HTTP_HOST'] == 'localhost') {
-            foreach($dirArray as $dirValue ) {
-                if ($state == 1) {
-                    $dir .= '/' . $dirValue;
+            foreach($dirArray as $dirValue) {
+                if (!empty($dirValue)) {
+                    $dir .= '/' . $dirValue; 
+                    if ($dirValue == 'public_html') return $dir;
                 }
-                if ($dirValue == 'Documents') {
-                    $state = 1;  
-                }
-            }
+            } 
         }
         // server code.
         else {
