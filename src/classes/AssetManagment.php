@@ -17,13 +17,14 @@ class AssetManagment {
         /* last part of url after final / */
         $urlEnding = basename($_SERVER['REQUEST_URI']); 
         $assetLocation = NULL;
-		
-	if ($urlEnding == '') $assetLocation = 'index.php';
-        else if (!in_array($urlEnding, $assetsEasy) && !strstr($_SERVER['PHP_SELF'], 'admin')) $assetLocation = 'project';
-        else if (!in_array($urlEnding, $assetsEasy) && strstr($_SERVER['PHP_SELF'], 'admin')) $assetLocation = 'adminProject';  
-        else $assetLocation = $urlEnding;
+	
+	if ($urlEnding == '' || $urlEnding == 'public_html') $assetLocation = 'index';
+	else if ($urlEnding == 'index.php') $assetLocation = 'index';
+	else if (!in_array($urlEnding, $assetsEasy) && !strstr($_SERVER['PHP_SELF'], 'admin')) $assetLocation = 'project';
+    else if (!in_array($urlEnding, $assetsEasy) && strstr($_SERVER['PHP_SELF'], 'admin')) $assetLocation = 'adminProject';  
+    else $assetLocation = $urlEnding;
         
-        return $assetLocation;
+    return $assetLocation;
     }
     
 }
