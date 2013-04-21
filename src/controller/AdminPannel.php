@@ -35,7 +35,7 @@ class AdminPannel implements ControllerProviderInterface
                     'choices' => $types,
                     'constraints' => new Assert\Choice($typesKey),
                 ))
-			   ->add('externalLocation', 'text', array())
+               ->add('externalLocation', 'text', array())
                ->add('description', 'textarea', array(
                     'constraints' => array(new Assert\NotBlank())
                 ))
@@ -64,12 +64,15 @@ class AdminPannel implements ControllerProviderInterface
             if ($request->isMethod('POST')) try {
                 if (isset($_POST['submitProject'])) {
                     $AdminPannel->formPostProject($app, $form);
+                    return $app->redirect($request->getRequestUri());
                 }
                 else if (isset($_POST['submitProjectType'])) {
                     $AdminPannel->formPostProjectType($app, $formType);
+                    return $app->redirect($request->getRequestUri());
                 }
                 else if (isset($_POST['submitDeleteProjects'])) {
                     $AdminPannel->deleteProjects($app, $formDeleteProjects);
+                    return $app->redirect($request->getRequestUri());
                 }
                 else if (isset($_POST['submitUpdateShortAbout'])) {
                     $AdminPannel->updateShortAbout($app, $formUpdateShortAbout);

@@ -13,6 +13,9 @@
         {% include 'includes/form.php' with {'form': formUpdateContact, 'formName': 'Update Contact' } %}
         {% include 'includes/form.php' with {'form': formUpdateUsername, 'formName': 'Update Username' } %}
         {% include 'includes/form.php' with {'form': formUpdatePassword, 'formName': 'Update Password' } %}
+        {% include 'includes/form.php' with {'form': formAddSkillType, 'formName': 'Add Skill Type' } %}
+        {% include 'includes/form.php' with {'form': formAddSkill, 'formName': 'Add Skill' } %}
+        {% include 'includes/form.php' with {'form': formDeleteSkill, 'formName': 'Delete Skill' } %}
     </div>
         
 

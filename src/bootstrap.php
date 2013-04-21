@@ -15,9 +15,12 @@ use Silex\Provider\SessionServiceProvider;
 use Silex\Provider\SecurityServiceProvider;
 use Silex\Provider\FormServiceProvider;
 use model\dbPortfolio;
+use model\EntitiesData;
 use model\entities\Admin;
 use model\entities\Projects;
 use model\entities\Types;
+use model\entities\SkillTypes;
+use model\entities\Skills;
 use classes\ImageManagment;
 use classes\UserProvider;
 use classes\AssetManagment;
@@ -65,16 +68,28 @@ $app['dbPortfolio'] = $app->share(function() use ($app) {
     return new dbPortfolio($app['db']);
 });
 
+$app['EntitiesData'] = $app->share(function() use ($app) {
+    return new EntitiesData($app['db']);
+});
+
 $app['Admin'] = $app->share(function() use ($app) {
-    return new Admin( $app['dbPortfolio']->getAdmin() );
+    return new Admin( $app['EntitiesData']->getAdmin() );
 });
 
 $app['Projects'] = $app->share(function() use ($app) {
-    return new Projects( $app['dbPortfolio']->getProjects() );
+    return new Projects( $app['EntitiesData']->getProjects() );
 });
 
 $app['Types'] = $app->share(function() use ($app) {
-    return new Types( $app['dbPortfolio']->getTypes() );
+    return new Types( $app['EntitiesData']->getTypes() );
+});
+
+$app['SkillTypes'] = $app->share(function() use ($app) {
+    return new SkillTypes( $app['EntitiesData']->getSkillTypes() );
+});
+
+$app['Skills'] = $app->share(function() use ($app) {
+    return new Skills( $app['EntitiesData']->getSkills(), $app['SkillTypes'] );
 });
 
 $app['AssetManagment'] = $app->share(function() use ($app) {
@@ -88,7 +103,7 @@ $app['ImageManagment'] = $app->share(function() use ($app) {
     # local directory on computer where images are.
     $dirLocal = preg_replace('/src/', 'public_html', __DIR__);
     $dirWeb = $_SERVER['PHP_SELF'];
-    return new ImageManagment($dirWeb, $dirLocal, $app['dbPortfolio']->getCaptions());
+    return new ImageManagment($dirWeb, $dirLocal, $app['EntitiesData']->getCaptions());
 });
 
 return $app;

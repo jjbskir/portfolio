@@ -5,6 +5,7 @@
 
 .hero-unit {
     background-color: white;
+    margin: 0px;
 }
 .hero-unit p {
     text-align: center;

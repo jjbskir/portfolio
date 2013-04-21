@@ -18,10 +18,12 @@ class About implements ControllerProviderInterface
 
         $home->get('/', function() use ($app)  {
              
-            $about    = $app['Admin']->getAbout();
+            $about      = $app['Admin']->getAbout();
+            $skills     = $app['Skills']->getTypeSkillMap();
             
             return $app['twig']->render('about.view.php', array(  
-                'about'   => $about,             
+                'about'   => $about,
+                'skills'  => $skills
             ));               
         })
         ->bind('about');
