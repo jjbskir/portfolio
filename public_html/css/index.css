@@ -3,10 +3,18 @@
 */
 
 
-.hero-unit {
+.hero-unit 
+{
     background-color: white;
     margin: 0px;
 }
-.hero-unit p {
+.hero-unit p 
+{
     text-align: center;
+}
+
+#box img
+{
+	height: 200px;
+	margin-bottom: 40px;
 }
