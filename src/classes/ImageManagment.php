@@ -43,20 +43,28 @@ class ImageManagment {
         
         $dir = NULL;
         $dirArray = explode('/', $_dir);
+        $state = 0;
         
-        // if in localhost enviorment.
         if ($_SERVER['HTTP_HOST'] == 'localhost') {
-			foreach($dirArray as $dirValue) {
-				if (!empty($dirValue)) {
-					$dir .= '/' . $dirValue; 
-					if ($dirValue == 'public_html') return $dir;
-				}
-			} 
+            foreach($dirArray as $dirValue ) {
+                if ($state == 1) {
+                    $dir .= '/' . $dirValue;
+                }
+                if ($dirValue == 'Documents') {
+                    $state = 1;  
+                }
+            }
         }
-        // used if production code is in root directory.
+        // server code.
         else {
-			return $dir;
+    		foreach($dirArray as $dirValue) {
+    			if ($state <= 1 && !empty($dirValue)) {
+            		$dir .= '/' . $dirValue;
+            		$state++;
+            	}
+    		}
         }
+        return $dir;
     }
     
     /**
