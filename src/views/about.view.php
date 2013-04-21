@@ -9,4 +9,32 @@
             </h3>
         </div>
         
+        <div id="aboutDivide">
+            <hr>
+        </div>
+        
+        <div class="container">
+        {% for key,type in skills %}
+
+            <div class="row" >
+                <ul>
+                    <h3> {{ key|capitalize }} </h3>
+                
+                {% for skill in type %}
+                    <li>
+                        {{ skill.skill|capitalize }}
+                        {% if loop.last %}
+                            
+                        {% else %}
+                            ,
+                        {% endif %}
+                    </li>
+                
+            
+                {% endfor %}
+                 
+                </ul>
+            </div>
+        {% endfor %} 
+        
 {% include 'includes/footer.php' %}

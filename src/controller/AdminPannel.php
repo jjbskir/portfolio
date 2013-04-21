@@ -35,7 +35,7 @@ class AdminPannel implements ControllerProviderInterface
                     'choices' => $types,
                     'constraints' => new Assert\Choice($typesKey),
                 ))
-			   ->add('externalLocation', 'text', array())
+               ->add('externalLocation', 'text', array())
                ->add('description', 'textarea', array(
                     'constraints' => array(new Assert\NotBlank())
                 ))

@@ -32,6 +32,39 @@ class AdminPersonal implements ControllerProviderInterface
                 ))
                ->getForm();
             
+           $formAddSkillType = $app['form.factory']->createBuilder('form')
+               ->add('hidden', 'hidden', array(
+                    'data' => 'add skill type',
+               ))
+               ->add('skillType', 'text', array(
+                    'constraints' => array(new Assert\NotBlank())
+                ))
+               ->getForm();
+           
+           $formAddSkill = $app['form.factory']->createBuilder('form')
+               ->add('hidden', 'hidden', array(
+                    'data' => 'add skill',
+               ))
+               ->add('typeId', 'choice', array(
+                    'choices' => $app['SkillTypes']->getIdTypeMap(),
+                    'constraints' => new Assert\Choice($app['SkillTypes']->getSkillTypesKey()),
+                ))
+               ->add('skill', 'text', array(
+                    'constraints' => array(new Assert\NotBlank())
+                ))
+               ->getForm();
+           
+            $formDeleteSkill = $app['form.factory']->createBuilder('form')
+                ->add('hidden', 'hidden', array(
+                    'data' => 'delete skill',
+                ))
+                ->add('skillsId', 'choice', array(
+                    'choices' => $app['Skills']->getIdSkillMap(),
+                    'multiple'  => true,
+                    'constraints' => new Assert\NotBlank(),
+                ))
+                ->getForm();  
+            
             $formUpdateName = $app['form.factory']->createBuilder('form')
                ->add('hidden', 'hidden', array(
                     'data' => 'update name',
@@ -89,6 +122,18 @@ class AdminPersonal implements ControllerProviderInterface
                     $Admin->formUpdate($app, $formUpdateUsername);
                 else if (isset($_POST['submitUpdatePassword']))
                     $Admin->formUpdate($app, $formUpdatePassword);
+                else if (isset($_POST['submitAddSkillType'])) {
+                    $Admin->formUpdate($app, $formAddSkillType);
+                    return $app->redirect($request->getRequestUri());
+                }
+                else if (isset($_POST['submitAddSkill'])) {
+                    $Admin->formUpdate($app, $formAddSkill);
+                    return $app->redirect($request->getRequestUri());
+                }
+                else if (isset($_POST['submitDeleteSkill'])) {
+                    $Admin->formUpdate($app, $formDeleteSkill);
+                    return $app->redirect($request->getRequestUri());
+                }
                 else                                        
                     throw new \Exception('Forms not sumbitted properly.');
             }
@@ -103,6 +148,9 @@ class AdminPersonal implements ControllerProviderInterface
                 'formUpdateContact'     => $formUpdateContact->createView(),
                 'formUpdateUsername'    => $formUpdateUsername->createView(),
                 'formUpdatePassword'    => $formUpdatePassword->createView(),
+                'formAddSkillType'      => $formAddSkillType->createView(),
+                'formAddSkill'          => $formAddSkill->createView(),
+                'formDeleteSkill'       => $formDeleteSkill->createView()
             ));   
         })
         ->bind('adminPersonal');
@@ -119,7 +167,7 @@ class AdminPersonal implements ControllerProviderInterface
             $data['id'] = $_app['Admin']->getId();
             $funcName = $this->creatFunctionName($data['hidden']);
             if (method_exists($this, $funcName)) {
-                    $data = call_user_func(array($this, $funcName), $data, $_app);
+                $data = call_user_func(array($this, $funcName), $data, $_app);
             }
             call_user_func(array($_app['dbPortfolio'], $funcName), $data);
             $this->setMessage($data['hidden']);
@@ -153,7 +201,7 @@ class AdminPersonal implements ControllerProviderInterface
         $arrayValues['password'] = $_app['security.encoder.digest']->encodePassword($arrayValues['password'], '');
         return $arrayValues;
     }
-
+    
     public function setMessage($message) {
         assert('is_string($message)');
         $this->message = $message;

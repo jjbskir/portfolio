@@ -24,7 +24,7 @@ class SkillTypes {
     public function getIdTypeMap() {
         $idTypeMap = array();
         if (is_array($this->skillTypes)) foreach ($this->skillTypes as $skillTypeObject) {
-            $idTypeMap[$skillTypeObject->getId()] = $skillTypeObject->getType();
+            $idTypeMap[$skillTypeObject->getId()] = $skillTypeObject->getSkillType();
         }
         return $idTypeMap;
     }
@@ -36,7 +36,15 @@ class SkillTypes {
         }
         return $keys;
     } 
-        
+       
+    public function getSkillType($_id) {
+        $types = $this->getSkillTypes();
+        if (isset($types[$_id])) {
+            return $types[$_id];
+        }
+        return null;
+    }
+    
     public function getSkillTypes() {
         return $this->skillTypes;
     }
@@ -49,19 +57,19 @@ class SkillTypes {
 class SkillType {
     
     private $id;
-    private $type;
+    private $skillType;
     
     public function __construct($_type) {
         $this->id   = $_type['id'];
-        $this->type = $_type['type'];
+        $this->skillType = $_type['skillType'];
     }
     
     public function getId() {
         return $this->id;
     }
 
-    public function getType() {
-        return $this->type;
+    public function getSkillType() {
+        return $this->skillType;
     }
            
 }

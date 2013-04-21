@@ -10,17 +10,31 @@ namespace model\entities;
 class Skills {
     
     private $skills;
-    
+    private $skillTypes;
+    private $typeSkillMap;
+
+
     /**
      * constructor
      * 
      * retrieves info from databases and creates project objects.
      */
-    public function __construct($dbSkills) {
+    public function __construct($dbSkills, $_skillTypes) {
+        $this->skillTypes = $_skillTypes;
         if (isset($dbSkills)) foreach ($dbSkills as $skill) {
             if (isset($skill)) {
                 $skillObject = new Skill($skill);
-                $this->skills[$skill['id']] = $skillObject;
+                $this->skills[$skillObject->getId()] = $skillObject;
+                $skillTypeObject = $this->skillTypes->getSkillType($skillObject->getTypeId());
+                
+                if (!isset($this->typeSkillMap[$skillTypeObject->getSkillType()])) {
+                    $this->typeSkillMap[$skillTypeObject->getSkillType()] = array();
+                    array_push($this->typeSkillMap[$skillTypeObject->getSkillType()], $skillObject);
+                }
+                else {
+                    array_push($this->typeSkillMap[$skillTypeObject->getSkillType()], $skillObject);
+                }
+              
             }
         }
     }
@@ -29,12 +43,16 @@ class Skills {
      * prepares a form related to projects for deleting.
      * Create a map relating name to id.
      */
-    public function getSkillIdMap() {
-        $idNameMap = array();
+    public function getIdSkillMap() {
+        $idSkillMap = array();
         if (is_array($this->skills)) foreach ($this->skills as $skillObject) {
-            $idNameMap[$skillObject->getId()] = $skillObject->getSkill();
+            $idSkillMap[$skillObject->getId()] = $skillObject->getSkill();
         }
-        return $idNameMap;
+        return $idSkillMap;
+    }
+    
+    public function getTypeSkillMap() {
+        return $this->typeSkillMap;
     }
     
     public function getSkills() {
