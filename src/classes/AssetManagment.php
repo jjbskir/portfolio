@@ -21,10 +21,10 @@ class AssetManagment {
 	if ($urlEnding == '' || $urlEnding == 'public_html') $assetLocation = 'index';
 	else if ($urlEnding == 'index.php') $assetLocation = 'index';
 	else if (!in_array($urlEnding, $assetsEasy) && !strstr($_SERVER['PHP_SELF'], 'admin')) $assetLocation = 'project';
-    else if (!in_array($urlEnding, $assetsEasy) && strstr($_SERVER['PHP_SELF'], 'admin')) $assetLocation = 'adminProject';  
-    else $assetLocation = $urlEnding;
+    	else if (!in_array($urlEnding, $assetsEasy) && strstr($_SERVER['PHP_SELF'], 'admin')) $assetLocation = 'adminProject';  
+    	else $assetLocation = $urlEnding;
         
-    return $assetLocation;
+    	return $assetLocation;
     }
     
 }
