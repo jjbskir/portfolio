@@ -98,7 +98,7 @@ INSERT INTO `Portfolio`.`users` (`id`, `username`, `password`, `roles`, `firstNa
 -- Table structure for table `skills`
 --
 
-CREATE TABLE IF NOT EXISTS `skills` (
+CREATE TABLE IF NOT EXISTS `Portfolio`.`skills` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `skill` varchar(100) NOT NULL,
   `typeId` int(11) NOT NULL,
@@ -108,7 +108,7 @@ CREATE TABLE IF NOT EXISTS `skills` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `skillTypes`
+-- Table structure for table `Portfolio`.`skillTypes`
 --
 
 CREATE TABLE IF NOT EXISTS `skillTypes` (
