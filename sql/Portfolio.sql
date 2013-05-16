@@ -111,7 +111,7 @@ CREATE TABLE IF NOT EXISTS `Portfolio`.`skills` (
 -- Table structure for table `Portfolio`.`skillTypes`
 --
 
-CREATE TABLE IF NOT EXISTS `skillTypes` (
+CREATE TABLE IF NOT EXISTS `Portfolio`.`skillTypes` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `skillType` varchar(100) NOT NULL DEFAULT '',
   UNIQUE KEY `type` (`skillType`),
